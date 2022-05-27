@@ -790,6 +790,13 @@ section {
   color: #fff;
 }
 
+.contact .infoo {
+  padding: 10px;
+  background: #fff;
+  width: 100%;
+  box-shadow: 0 0 24px 0 rgba(0, 0, 0, 0.12);
+}
+
 .email-form button {
   background: #149ddd;
   border: 0;
