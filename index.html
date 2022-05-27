@@ -652,31 +652,12 @@
           </div>
 
           <div class="col-lg-7 mt-5 mt-lg-0 d-flex align-items-stretch">
-            <div class="myForm col-12 col-md-5 dbor10" id="contactForm">
-              <p>Request a book, make a complaint or report an issue</p>
-              <div class="myFormGroup">
-                  <p class="dfont-s">NAME:</p>
-                  <input type="text" id="contactName" value="" placeholder="YOUR NAME HERE">
-              </div>
-              <div class="myFormGroup">
-                  <p class="dfont-s">EMAIL:</p>
-                  <input type="text" id="contactEmail" value="" placeholder="EMAIL HERE">
-              </div>
-              <div class="myFormGroup">
-                  <p class="dfont-s">SUBJECT:</p>
-                  <input type="text" id="contactSubject" placeholder="SUBJECT HERE">
-              </div>
-              <div class="myFormGroup">
-                  <p class="dfont-s">MESSAGE:</p>
-                  <textarea type="text" id="contactMessage" placeholder="ENTER YOUR MESSAGE HERE" rows="4"></textarea>
-              </div>
-              <div class="myFormGroup">
-                  <p class="text-danger" id="contactError"></p>
-              </div>
-              <div class="myFormGroup">
-                  <button class="myBtn1 dborn dmw280 m-auto" id="contactSubmit" onclick="submitContactForm()">SUBMIT</button>
-              </div>
-          </div>
+		  <h3>I am available to work different websites, you can email by clicking the button</h3>  <br>
+            <form method="post" role="form" class="php-email-form">
+              <a href="mailto:charleschukwudichukwudi@gmail.com">
+                <div class="text-center"><button type="submit">Send Message</button></div>
+              </a>
+            </form>
           </div>
 
         </div>
@@ -716,55 +697,5 @@
   <script src="assets/js/main.js"></script>
 
 </body>
-<script src="jQuery.js"></script>
-<script>
-     submitContactForm = (e) => {
-    let form = document.getElementById('contactForm');
-    let error = document.getElementById('contactError');
-    let btn = document.getElementById('contactSubmit');
-    let email =document.getElementById('contactEmail').value;
-    let name =document.getElementById('contactName').value;
-    let subject =document.getElementById('contactSubject').value;
-    let message =document.getElementById('contactMessage').value;
-    let ins = document.querySelectorAll('#contactForm input, #contactForm textarea');
-    error.innerHTML = "";
-    
-    console.log(ins, "is ins");
-    for (let i = 0; i < ins.length; i++) {
-        if(ins[i].value.trim().length == ""){
-            error.innerHTML = "all fields are required";
-            return;
-        } 
-    }
-        btn.innerHTML = '<div class="spinner-border" role="status"><div class="visually-hidden">loading...</div></div>';
-			btn.disabled = true;
 
-			var formData = new FormData();
-
-			formData.append('email', email);
-			formData.append('subject', subject);
-			formData.append('name', name);
-			formData.append('message', message);
-
-			$.ajax({
-				url: './formSubmit.php',
-				type: 'POST',
-				cache: false,
-				contentType: false,
-				processData: false,
-				data: formData,
-				success: function (response) {  
-					btn.textContent = 'SUBMIT';
-					btn.disabled = false;
-                    if (response.indexOf('sent') != -1) {
-                        $("#contactForm").load(window.localStorage.href+"#contactForm > *");
-                        myAlert(response.split('(alert)')[1], 4)
-                    } else {
-                        error.innerHTML = response;
-                    }
-				}
-			})
-   
-}
-</script>
 </html>
